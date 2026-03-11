@@ -1,0 +1,294 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-teal: #0d4f4f;
+  --accent-amber: #d4943a;
+  --background-cream: #faf8f5;
+  --text-charcoal: #1a1a1a;
+  --border-light: #e5e7eb;
+}
+
+body {
+  color: var(--text-charcoal);
+  background: var(--background-cream);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-teal);
+}
+
+.btn-primary {
+  background-color: var(--primary-teal);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: rgba(13, 79, 79, 0.9);
+}
+
+.btn-secondary {
+  background-color: var(--accent-amber);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(212, 148, 58, 0.9);
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-light);
+  padding: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-charcoal);
+}
+
+input, textarea, select {
+  border: 1px solid var(--border-light);
+  border-radius: 0.375rem;
+  padding: 0.75rem;
+  background-color: white;
+  transition: all 0.2s;
+  font-size: 16px; /* Prevent iOS zoom */
+  min-height: 44px; /* Touch-friendly minimum height */
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--primary-teal);
+  box-shadow: 0 0 0 3px rgba(13, 79, 79, 0.1);
+}
+
+/* Mobile-first responsive adjustments */
+@media (min-width: 768px) {
+  input, textarea, select {
+    padding: 0.5rem 0.75rem;
+    font-size: 14px;
+    min-height: auto;
+  }
+}
+
+/* Button improvements for mobile */
+.btn-primary, .btn-secondary {
+  min-height: 44px;
+  touch-action: manipulation;
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  .btn-primary, .btn-secondary {
+    font-size: 14px;
+    min-height: auto;
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 767px) {
+  .btn-mobile-full {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card {
+    padding: 1rem;
+  }
+  
+  body {
+    font-size: 16px;
+  }
+}
+
+/* ==============================
+   MOBILE RESPONSIVE OVERRIDES
+   Using plain CSS for reliability
+   ============================== */
+
+/* Line item: desktop layout hidden on mobile */
+.line-item-desktop {
+  display: none;
+}
+.line-item-mobile {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .line-item-desktop {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    align-items: end;
+  }
+  .line-item-mobile {
+    display: none;
+  }
+}
+
+/* Form grids: single column on mobile */
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .form-grid .full-width {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Payment radio: stack on mobile */
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .payment-options {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+}
+
+/* Bank fields: stack on mobile, 3-col on desktop */
+.bank-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .bank-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Line item quantity/price row on mobile */
+.line-item-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Ensure all inputs full width */
+input, textarea, select {
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* Fix date input overflow on mobile */
+input[type="date"] {
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  min-width: 0 !important;
+  flex-shrink: 1 !important;
+}
+
+@media (max-width: 767px) {
+  input[type="date"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    font-size: 16px !important; /* Prevent zoom on iOS */
+  }
+  
+  /* Ensure the input group doesn't overflow */
+  .input-group {
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  
+  /* Ensure form grid cells don't overflow */
+  .form-grid > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    flex-shrink: 1 !important;
+  }
+  
+  /* Force any date input containers to behave */
+  .form-grid .input-group {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  
+  /* Fix oversized icons on mobile */
+  svg {
+    width: 16px !important;
+    height: 16px !important;
+    max-width: 16px !important;
+    max-height: 16px !important;
+  }
+  
+  /* Button icons slightly larger but controlled */
+  .btn-primary svg,
+  .btn-secondary svg {
+    width: 18px !important;
+    height: 18px !important;
+    max-width: 18px !important;
+    max-height: 18px !important;
+  }
+  
+  /* Warning icon should be small and proportional */
+  .warning-icon {
+    width: 20px !important;
+    height: 20px !important;
+    max-width: 20px !important;
+    max-height: 20px !important;
+  }
+  
+  /* Save status icon very small */
+  .text-green-500 svg {
+    width: 14px !important;
+    height: 14px !important;
+    max-width: 14px !important;
+    max-height: 14px !important;
+  }
+}
+
+/* Main layout: stack on mobile */
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .main-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
