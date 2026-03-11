@@ -122,20 +122,20 @@ export default function InvoiceGenerator() {
   }
 
   return (
-    <div className="min-h-screen bg-background-cream">
+    <div className="min-h-screen bg-background-cream overflow-x-hidden">
       {/* Header */}
       <header className="bg-white shadow-sm border-b border-border-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:items-center sm:justify-between">
-            <div className="text-center sm:text-left">
+            <div className="text-center sm:text-left min-w-0">
               <h1 className="text-2xl sm:text-3xl font-bold text-primary-teal">Invoicely</h1>
               <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-3">
-                <p className="text-sm text-gray-600">Free Australian Tax Invoice Generator</p>
+                <p className="text-xs sm:text-sm text-gray-600">Free Australian Tax Invoice Generator</p>
                 {autoSaveStatus && (
-                  <div className="flex items-center space-x-1 text-xs">
+                  <div className="flex items-center justify-center sm:justify-start space-x-1 text-xs">
                     {autoSaveStatus === 'saving' ? (
                       <>
-                        <div className="animate-spin rounded-full h-3 w-3 border-b border-gray-400"></div>
+                        <div className="animate-spin rounded-full h-3 w-3 border-b border-gray-400 flex-shrink-0"></div>
                         <span className="text-gray-500">Saving...</span>
                       </>
                     ) : (
@@ -150,19 +150,19 @@ export default function InvoiceGenerator() {
                 )}
               </div>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3 items-center">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 items-stretch sm:items-center w-full sm:w-auto">
               {saveStatus && (
-                <span className="text-sm text-green-600 font-medium">{saveStatus}</span>
+                <span className="text-sm text-green-600 font-medium text-center">{saveStatus}</span>
               )}
               <button
                 onClick={loadBusinessDetails}
-                className="btn-mobile-full sm:w-auto text-sm text-primary-teal hover:text-opacity-80 transition-colors min-h-[44px] px-4 py-2 border border-primary-teal rounded-md"
+                className="w-full sm:w-auto text-sm text-primary-teal hover:text-opacity-80 transition-colors min-h-[44px] px-4 py-2 border border-primary-teal rounded-md"
               >
                 Use My Business Details
               </button>
               <button
                 onClick={saveBusinessDetails}
-                className="btn-secondary btn-mobile-full sm:w-auto text-sm"
+                className="btn-secondary w-full sm:w-auto text-sm"
               >
                 Save Business Details
               </button>
@@ -172,7 +172,7 @@ export default function InvoiceGenerator() {
       </header>
 
       {/* Main Content */}
-      <main style={{maxWidth: '80rem', margin: '0 auto', padding: '1.5rem 1rem'}}>
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
         {/* Pro Upgrade Section */}
         <div style={{marginBottom: '2rem'}}>
           <ProUpgrade onUpgrade={() => setIsPro(true)} />

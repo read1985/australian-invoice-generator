@@ -244,41 +244,13 @@ input[type="date"] {
     min-width: 0 !important;
   }
   
-  /* Fix oversized icons on mobile */
+  /* Prevent SVGs from growing unexpectedly on mobile */
   svg {
-    width: 16px !important;
-    height: 16px !important;
-    max-width: 16px !important;
-    max-height: 16px !important;
-  }
-  
-  /* Button icons slightly larger but controlled */
-  .btn-primary svg,
-  .btn-secondary svg {
-    width: 18px !important;
-    height: 18px !important;
-    max-width: 18px !important;
-    max-height: 18px !important;
-  }
-  
-  /* Warning icon should be small and proportional */
-  .warning-icon {
-    width: 20px !important;
-    height: 20px !important;
-    max-width: 20px !important;
-    max-height: 20px !important;
-  }
-  
-  /* Save status icon very small */
-  .text-green-500 svg {
-    width: 14px !important;
-    height: 14px !important;
-    max-width: 14px !important;
-    max-height: 14px !important;
+    flex-shrink: 0;
   }
 }
 
-/* Main layout: stack on mobile */
+/* Main layout: stack on mobile, side-by-side on desktop */
 .main-layout {
   display: flex;
   flex-direction: column;
@@ -290,5 +262,6 @@ input[type="date"] {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
+    align-items: start;
   }
 }

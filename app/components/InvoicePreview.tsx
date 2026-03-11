@@ -53,7 +53,7 @@ export default function InvoicePreview({ data, isPro = false }: InvoicePreviewPr
                       className="btn-secondary opacity-50 cursor-not-allowed flex items-center justify-center space-x-2 w-full sm:w-auto min-w-[140px]"
                       title="Upgrade to Pro to email invoices directly to clients"
                     >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                       <span>Email Invoice (Pro)</span>
@@ -72,7 +72,7 @@ export default function InvoicePreview({ data, isPro = false }: InvoicePreviewPr
                     className="btn-secondary opacity-50 cursor-not-allowed flex items-center justify-center space-x-2 w-full sm:w-auto min-w-[140px]"
                     title={`Missing: ${missingFields.map(f => f.label).join(', ')}`}
                   >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                     <span>Email Invoice</span>
@@ -84,7 +84,7 @@ export default function InvoicePreview({ data, isPro = false }: InvoicePreviewPr
                     className="btn-primary opacity-50 cursor-not-allowed flex items-center justify-center space-x-2 w-full sm:w-auto min-w-[140px]"
                     title={`Missing: ${missingFields.map(f => f.label).join(', ')}`}
                   >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                     <span>Download PDF</span>
@@ -96,7 +96,7 @@ export default function InvoicePreview({ data, isPro = false }: InvoicePreviewPr
           {!canGeneratePDF && (
             <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
               <div className="flex items-start space-x-2">
-                <svg className="w-4 h-4 text-amber-600 mt-0.5 flex-shrink-0 warning-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
                 </svg>
                 <div>
