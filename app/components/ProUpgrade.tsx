@@ -72,36 +72,16 @@ export default function ProUpgrade({ onUpgrade }: ProUpgradeProps) {
   }
 
   return (
-    <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
+    <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
       <div className="flex items-start space-x-3">
-        <svg className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.728-.833-2.498 0L4.316 16.5c-.77.833.192 2.5 1.732 2.5z" />
+        <svg className="w-5 h-5 text-primary-teal mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
         <div className="flex-1">
-          <h3 className="font-semibold text-amber-800">Free Version</h3>
-          <p className="text-sm text-amber-700 mb-3">
-            You can generate and download PDFs for free. Upgrade to Pro for unlimited use + email sending.
+          <h3 className="font-semibold text-gray-800">Upgrade to Pro</h3>
+          <p className="text-sm text-gray-600 mb-3">
+            Unlimited invoices + email sending. One-time payment, no subscription.
           </p>
-          <div className="space-y-2 text-sm text-amber-700 mb-4">
-            <div className="flex items-center space-x-2">
-              <svg className="w-4 h-4 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Unlimited invoice generation</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <svg className="w-4 h-4 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Email invoices directly to clients</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <svg className="w-4 h-4 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <span>No recurring fees - one-time payment</span>
-            </div>
-          </div>
           <button
             onClick={handleUpgrade}
             disabled={isLoading}

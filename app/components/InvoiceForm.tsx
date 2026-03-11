@@ -46,8 +46,37 @@ export default function InvoiceForm({ data, onChange }: InvoiceFormProps) {
     '60 days'
   ]
 
+  const missingFields: string[] = []
+  if (!data.businessName) missingFields.push('Business name')
+  if (!data.abn) missingFields.push('ABN')
+  if (!data.businessAddress) missingFields.push('Address')
+  if (!data.businessEmail) missingFields.push('Email')
+  if (!data.clientName) missingFields.push('Client name')
+  if (!data.clientAddress) missingFields.push('Client address')
+  if (!data.invoiceNumber) missingFields.push('Invoice number')
+  if (!data.invoiceDate) missingFields.push('Invoice date')
+  if (!data.lineItems.some(i => i.description && i.quantity > 0 && i.unitPrice > 0)) {
+    missingFields.push('Line item')
+  }
+
   return (
     <div className="space-y-6">
+      {/* Progress indicator */}
+      <div className="text-sm">
+        {missingFields.length === 0 ? (
+          <div className="flex items-center space-x-1.5 text-green-600">
+            <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+            <span className="font-medium">Ready to download</span>
+          </div>
+        ) : (
+          <p className="text-gray-400">
+            Still needed: {missingFields.join(', ')}
+          </p>
+        )}
+      </div>
+
       {/* Business Details */}
       <div className="card">
         <h2 className="text-xl font-semibold text-primary-teal mb-4">Your Business Details</h2>
@@ -220,9 +249,13 @@ export default function InvoiceForm({ data, onChange }: InvoiceFormProps) {
                     <button
                       type="button"
                       onClick={() => removeLineItem(item.id)}
-                      style={{color: '#dc2626', padding: '0.5rem', minHeight: '44px', background: 'none', border: 'none', cursor: 'pointer'}}
+                      style={{color: '#dc2626', padding: '0.5rem', minHeight: '44px', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.25rem'}}
+                      aria-label="Remove item"
                     >
-                      🗑️ Remove
+                      <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                      </svg>
+                      Remove
                     </button>
                   )}
                 </div>
@@ -335,8 +368,11 @@ export default function InvoiceForm({ data, onChange }: InvoiceFormProps) {
                         type="button"
                         onClick={() => removeLineItem(item.id)}
                         style={{color: '#dc2626', background: 'none', border: 'none', cursor: 'pointer', padding: '0.25rem'}}
+                        aria-label="Remove item"
                       >
-                        🗑️
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
                       </button>
                     )}
                   </div>

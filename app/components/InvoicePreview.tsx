@@ -42,43 +42,14 @@ export default function InvoicePreview({ data, isPro = false }: InvoicePreviewPr
         <div className="flex flex-col space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
             <h2 className="text-xl font-semibold text-primary-teal">Invoice Preview</h2>
-            {canGeneratePDF ? (
-              <div className="flex flex-col sm:flex-row gap-3">
-                <div className="w-full sm:w-auto">
-                  {isPro ? (
-                    <EmailInvoice data={data} />
-                  ) : (
-                    <button
-                      disabled
-                      className="btn-secondary opacity-50 cursor-not-allowed flex items-center justify-center space-x-2 w-full sm:w-auto min-w-[140px]"
-                      title="Upgrade to Pro to email invoices directly to clients"
-                    >
-                      <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                      <span>Email Invoice (Pro)</span>
-                    </button>
-                  )}
-                </div>
-                <div className="w-full sm:w-auto">
-                  <PDFGenerator data={data} />
-                </div>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <div className="w-full sm:w-auto">
+                <EmailInvoice data={data} />
               </div>
-            ) : (
-              <div className="flex flex-col sm:flex-row gap-3">
-                <div className="w-full sm:w-auto">
-                  <button
-                    disabled
-                    className="btn-secondary opacity-50 cursor-not-allowed flex items-center justify-center space-x-2 w-full sm:w-auto min-w-[140px]"
-                    title={`Missing: ${missingFields.map(f => f.label).join(', ')}`}
-                  >
-                    <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    <span>Email Invoice</span>
-                  </button>
-                </div>
-                <div className="w-full sm:w-auto">
+              <div className="w-full sm:w-auto">
+                {canGeneratePDF ? (
+                  <PDFGenerator data={data} />
+                ) : (
                   <button
                     disabled
                     className="btn-primary opacity-50 cursor-not-allowed flex items-center justify-center space-x-2 w-full sm:w-auto min-w-[140px]"
@@ -89,9 +60,9 @@ export default function InvoicePreview({ data, isPro = false }: InvoicePreviewPr
                     </svg>
                     <span>Download PDF</span>
                   </button>
-                </div>
+                )}
               </div>
-            )}
+            </div>
           </div>
           {!canGeneratePDF && (
             <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
